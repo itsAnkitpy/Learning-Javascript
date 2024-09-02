@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // function playGame() {
+        //     let playerScore = 0;
+        //     let computerScore = 0;
+
+
+
+        //     for (let round = 1; round <= 5; round++) {
+
+        //         let gameChoice = ['Rock', 'Paper', 'Scissors'];
+
+        //         let playerSelection = prompt("Choose your option rock, paper or scissors").toLowerCase();
+        //         // console.log(`Your choice: ${playerSelection}`);
+
+        //         // To get random choice for computer
+        //         let randomNumber = Math.floor(Math.random() * gameChoice.length);
+        //         let computerSelection = gameChoice[randomNumber].toLowerCase();
+        //         // console.log(`Computer choice: ${computerSelection}`);
+        //         let result = playRound(playerSelection, computerSelection)
+        //         console.log(result);
+        //     }
+
+        //     console.log("Game Over");
+        //     if(computerScore > playerScore) {
+        //         console.log("Computer wins overall");
+        //     }else if(playerScore > computerScore) {
+        //         console.log("You win overall");
+        //     } else {
+        //         console.log("Its a DRAW!");
+        //     }
+
+
+        //     function playRound(playerSelection, computerSelection) {
+        //         if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        //             return "Invalid choice. Please try again.";
+        //         } else if (playerSelection === computerSelection) {
+        //             return "Draw";
+        //         } else if (playerSelection === 'rock' && computerSelection === 'scissors'
+        //             || playerSelection === 'paper' && computerSelection === 'rock'
+        //             || playerSelection === 'scissors' && computerSelection === 'paper') {
+        //             playerScore += 1
+        //             return `You win. Your choice: ${playerSelection} Computer choice: ${computerSelection}
+        //                         Your score: ${playerScore} Computer score: ${computerScore}`
+        //         }
+        //         else {
+        //             computerScore += 1
+        //             return `Computer wins. Your choice: ${playerSelection} Computer choice: ${computerSelection}
+        //                         Your score: ${playerScore} Computer score: ${computerScore}`
+        //         }
+        //     }
+        // }
+
+        // console.log(playGame());
+
+        function playGame() {
+            console.log('Total rounds - 5');
+            let playerScore = 0;
+            let computerScore = 0;
+            let round = 1;
+
+            while (round <= 5) {
+                console.log(`Round ${round}`);
+
+                let gameChoices = ['rock', 'paper', 'scissors'];
+
+                let playerChoice = prompt('Enter your choice:').toLowerCase();
+
+                let randomNumber = Math.floor(Math.random() * gameChoices.length);
+                let computerChoice = gameChoices[randomNumber].toLowerCase();
+
+                if (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
+                    console.log('Invalid choice. Please try again.');
+                } else {
+                    let result = playRound(playerChoice, computerChoice);
+                    console.log(result);
+                    round++; // Increment the round only if the choice is valid
+                }
+            }
+
+            console.log('Game over!');
+
+            if (playerScore > computerScore) {
+                console.log('Player is the overall winner');
+            } else if (computerScore > playerScore) {
+                console.log('Computer is the overall winner');
+            } else {
+                console.log('OVERALL DRAW');
+            }
+
+            function playRound(playerChoice, computerChoice) {
+                if (playerChoice === computerChoice) {
+                    return 'DRAW';
+                } else if (playerChoice === 'rock' && computerChoice === 'scissors'
+                    || playerChoice === 'paper' && computerChoice === 'rock'
+                    || playerChoice === 'scissors' && computerChoice === 'paper') {
+                    playerScore += 1;
+                    return `You win. Your choice: ${playerChoice} Computer choice: ${computerChoice}
+                        Your score: ${playerScore} Computer score: ${computerScore}`;
+                }
+                else {
+                    computerScore += 1;
+                    return `Computer wins. Your choice: ${playerChoice} Computer choice: ${computerChoice}
+                        Your score: ${playerScore} Computer score: ${computerScore}`;
+
+                }
+            }
+        }
+
+
+        console.log(playGame());
+
+    </script>
+</body>
+
+</html>
